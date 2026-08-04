@@ -45,6 +45,279 @@ Pense no TDD como dirigir seguindo um **GPS**: antes de sair, você informa o de
 - **Desafios:** Exige alta disciplina, curva de aprendizado inicial e percepção de lentidão no início do processo.
 
 ---
+````markdown
+# Regra de Ouro do TDD
+
+> **"Nenhum código de produção é escrito sem antes existir um teste falhando."**  
+> — Kent Beck (criador do Test-Driven Development)
+
+Esta é a principal regra do **TDD (Test-Driven Development)** e resume toda a filosofia dessa metodologia.
+
+---
+
+# O que é código de produção?
+
+Código de produção é todo o código que realmente implementa as funcionalidades do sistema e será utilizado pelos usuários.
+
+Exemplo:
+
+```java
+public double calcularArea(double largura, double altura) {
+    return largura * altura;
+}
+```
+
+Outro exemplo:
+
+```java
+public double paraF(double celsius) {
+    return celsius * 9 / 5 + 32;
+}
+```
+
+Esses métodos fazem parte da aplicação e são considerados **código de produção**.
+
+---
+
+# O que significa "um teste falhando"?
+
+Antes de escrever qualquer método, criamos um teste que descreve o comportamento esperado.
+
+Por exemplo, imagine que queremos criar um conversor de temperatura.
+
+Primeiro escrevemos o teste:
+
+```java
+@Test
+void deveConverterZeroGraus() {
+    Conversor conversor = new Conversor();
+
+    assertEquals(32, conversor.paraF(0));
+}
+```
+
+Neste momento, o método **ainda não existe**.
+
+A IDE provavelmente apresentará um erro semelhante a:
+
+```text
+Cannot resolve method 'paraF'
+```
+
+Ou, caso exista um método vazio:
+
+```java
+public double paraF(double celsius) {
+    return 0;
+}
+```
+
+Ao executar o teste teremos:
+
+```text
+Expected: 32
+Actual: 0
+```
+
+O teste **falhou**, exatamente como esperado.
+
+---
+
+# Somente depois escrevemos o código
+
+Agora implementamos apenas o necessário para fazer o teste passar.
+
+```java
+public double paraF(double celsius) {
+    return celsius * 9 / 5 + 32;
+}
+```
+
+Executando novamente:
+
+```text
+✔ Teste aprovado
+```
+
+---
+
+# Por que fazer dessa forma?
+
+Sem utilizar TDD, o desenvolvimento normalmente acontece assim:
+
+```text
+Escreve muito código
+        ↓
+Depois lembra de testar
+        ↓
+Descobre vários erros
+        ↓
+Volta corrigindo tudo
+```
+
+Com TDD, o processo é diferente:
+
+```text
+Pensa no comportamento esperado
+            ↓
+Escreve o teste
+            ↓
+O teste falha
+            ↓
+Escreve apenas o código necessário
+            ↓
+O teste passa
+            ↓
+Melhora o código (Refatoração)
+```
+
+Dessa forma, o desenvolvimento ocorre em pequenos passos, tornando o processo mais seguro e organizado.
+
+---
+
+# Analogia: Construindo uma ponte
+
+Imagine um engenheiro responsável por construir uma ponte.
+
+## Sem TDD
+
+Ele constrói toda a ponte e somente depois verifica se ela suporta caminhões.
+
+Se houver algum problema estrutural, será necessário gastar tempo e dinheiro para corrigir.
+
+## Com TDD
+
+Antes de iniciar a construção, ele define um requisito:
+
+> **"A ponte deve suportar 30 toneladas."**
+
+Então constrói apenas o necessário para atender esse requisito e realiza testes continuamente durante a construção.
+
+Essa é exatamente a filosofia do TDD: validar cada requisito antes de continuar desenvolvendo.
+
+---
+
+# Exemplo completo
+
+## Passo 1 — Escrevendo o teste
+
+```java
+@Test
+void deveSomarDoisNumeros() {
+    Calculadora calc = new Calculadora();
+
+    assertEquals(5, calc.somar(2, 3));
+}
+```
+
+Resultado:
+
+```text
+❌ O teste falha
+```
+
+---
+
+## Passo 2 — Escrevendo o código mínimo
+
+```java
+public int somar(int a, int b) {
+    return a + b;
+}
+```
+
+Resultado:
+
+```text
+✔ O teste passa
+```
+
+---
+
+## Passo 3 — Surge um novo requisito
+
+Agora queremos testar números negativos.
+
+Criamos um novo teste.
+
+```java
+@Test
+void deveSomarNumeroNegativo() {
+    Calculadora calc = new Calculadora();
+
+    assertEquals(-2, calc.somar(-5, 3));
+}
+```
+
+Caso ele falhe, ajustamos o código até que todos os testes passem novamente.
+
+---
+
+# O ciclo do TDD
+
+Essa regra faz parte do famoso ciclo **Red → Green → Refactor**.
+
+| Etapa | O que acontece | Cor |
+|--------|----------------|-----|
+| Escrever um teste | O teste falha porque a funcionalidade ainda não existe. | 🔴 Red |
+| Implementar o mínimo necessário | O teste passa. | 🟢 Green |
+| Melhorar o código | Refatora o código mantendo todos os testes passando. | 🔵 Refactor |
+
+Esse ciclo é repetido durante todo o desenvolvimento.
+
+```text
+🔴 RED
+Escreva um teste que falha.
+        ↓
+🟢 GREEN
+Implemente apenas o suficiente para fazê-lo passar.
+        ↓
+🔵 REFACTOR
+Melhore o código sem alterar seu comportamento.
+        ↓
+Repita o ciclo.
+```
+
+---
+
+# Qual é o objetivo dessa regra?
+
+A regra
+
+> **"Nenhum código de produção é escrito sem antes existir um teste falhando."**
+
+faz com que cada linha de código tenha um propósito claro.
+
+Em vez de criar funcionalidades "por garantia" ou "porque talvez sejam úteis", o desenvolvedor implementa somente aquilo que um teste exige.
+
+Essa prática traz diversos benefícios:
+
+- ✅ Evita código desnecessário.
+- ✅ Garante que cada funcionalidade tenha um teste.
+- ✅ Facilita a manutenção do sistema.
+- ✅ Reduz a quantidade de defeitos.
+- ✅ Aumenta a confiança para realizar alterações.
+- ✅ Incentiva um código mais simples e organizado.
+
+---
+
+# Resumo
+
+No TDD, o teste não serve apenas para verificar se o sistema funciona.
+
+Ele **guia o desenvolvimento**.
+
+Em outras palavras:
+
+- Primeiro pensamos **no comportamento esperado**.
+- Depois escrevemos um **teste que descreve esse comportamento**.
+- Em seguida implementamos **somente o necessário** para fazer o teste passar.
+- Por fim, melhoramos o código mantendo todos os testes aprovados.
+
+Essa abordagem resulta em sistemas mais confiáveis, com melhor qualidade e mais fáceis de evoluir ao longo do tempo.
+````
+
+---
 
 ## 3. Atividades Práticas
 
