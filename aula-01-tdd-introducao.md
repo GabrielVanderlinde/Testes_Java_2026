@@ -413,15 +413,9 @@ public class CalculadoraMulta {
 
 **Dica:** se a turma tiver dificuldade com o algoritmo, permita usar uma biblioteca validadora, mas cobrando que os testes sejam autorais e cubram os casos de borda.
 
-### Atividade 4
-
-- **Testes (RED):** mapear as abreviações ("vc" → "você", "pq" → "porque", "td" → "tudo"); texto sem abreviações permanece igual; maiúsculas preservadas.
-- **Implementação (GREEN/REFACTOR):** substituição por dicionário (`Map<String, String>`), preservando o restante do texto.
-- **Debate:** relacionar com acessibilidade web (**WCAG**) e como a síntese de voz falha ao ler abreviações, prejudicando a compreensão de usuários cegos. Conectar com o perfil do curso: pequenos gestos técnicos geram impacto social real.
-
 ---
 
-## 5. Roda de Fechamento / Avaliação da Aula
+## 4. Roda de Fechamento / Avaliação da Aula
 
 Cada dupla deve apresentar um *commit* específico de uma das fases (RED, GREEN ou REFACTOR) e explicar em uma frase o que aprendeu. A avaliação considerará a disciplina em não pular a fase RED, o versionamento correto e a qualidade das reflexões.
 
