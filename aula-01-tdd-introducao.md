@@ -317,7 +317,6 @@ Em outras palavras:
 Essa abordagem resulta em sistemas mais confiáveis, com melhor qualidade e mais fáceis de evoluir ao longo do tempo.
 ````
 
----
 
 ## 3. Atividades Práticas
 
