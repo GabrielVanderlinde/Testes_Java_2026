@@ -45,7 +45,7 @@ Pense no TDD como dirigir seguindo um **GPS**: antes de sair, você informa o de
 - **Desafios:** Exige alta disciplina, curva de aprendizado inicial e percepção de lentidão no início do processo.
 
 ---
-````markdown
+
 # Regra de Ouro do TDD
 
 > **"Nenhum código de produção é escrito sem antes existir um teste falhando."**  
