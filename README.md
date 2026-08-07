@@ -3,6 +3,7 @@
 ## Unidade Curricular: Teste de Sistemas
 ### Curso Técnico em Desenvolvimento de Sistemas
 
+**Direitos Reservados Karize Viecelli — @karizeviecelli**
 ---
 
 ## 1. Identificação
@@ -108,3 +109,6 @@ Critério de aprovação: nota final ≥ 6,0 (escala 0–10) e frequência míni
 - BECK, Kent. *Test Driven Development: By Example*. Addison-Wesley, 2002.
 - FOWLER, Martin. *Refactoring: Improving the Design of Existing Code*. 2. ed. Addison-Wesley, 2018.
 - Documentação oficial do Mockito. Disponível em: https://site.mockito.org/
+
+---
+Direitos Reservados Karize Viecelli — @karizeviecelli
