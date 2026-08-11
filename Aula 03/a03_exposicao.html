@@ -171,41 +171,106 @@ src/test/java/br/edu/testesistemas/entidades/<span class="fn">LivroTest.java</sp
     <div class="tag-desc" id="tag-desc"></div>
   </div>
 
-  <!-- Slide 4 -->
-  <div class="slide-wrap">
-    <div class="eyebrow">Exemplo</div>
-    <h2>A entidade Livro</h2>
-    <div class="code-wrap"><pre>
-<span class="k">public class</span> <span class="t">Livro</span> {
-    <span class="k">private</span> <span class="t">String</span> titulo;
-    <span class="k">private</span> <span class="k">boolean</span> emprestado;
+<!-- Slide 4 -->
 
-    <span class="k">public</span> <span class="k">void</span> <span class="fn">emprestar</span>() {
-        <span class="k">if</span> (emprestado)
-            <span class="k">throw new</span> <span class="t">IllegalStateException</span>(<span class="s">"..."</span>);
-        emprestado = <span class="k">true</span>;
-    }
+<div class="slide-wrap">
+
+  <div class="eyebrow">Exemplo</div>
+
+  <h2>A entidade Livro</h2>
+
+  <div class="code-wrap">
+    <pre>
+<span class="k">public class</span> <span class="t">Livro</span> {
+
+```
+<span class="k">private</span> <span class="t">String</span> titulo;
+<span class="k">private</span> <span class="t">String</span> autor;
+<span class="k">private</span> <span class="k">boolean</span> emprestado;
+
+
+<span class="c">// Construtor</span>
+<span class="k">public</span> <span class="fn">Livro</span>(<span class="t">String</span> titulo, <span class="t">String</span> autor) {
+    <span class="k">this</span>.titulo = titulo;
+    <span class="k">this</span>.autor = autor;
+    <span class="k">this</span>.emprestado = <span class="k">false</span>;
 }
-    </pre></div>
+
+
+<span class="c">// Realiza o empréstimo do livro</span>
+<span class="k">public</span> <span class="k">void</span> <span class="fn">emprestar</span>() {
+
+    <span class="k">if</span> (emprestado) {
+        <span class="k">throw new</span> <span class="t">IllegalStateException</span>(
+            <span class="s">"O livro já está emprestado."</span>
+        );
+    }
+
+    emprestado = <span class="k">true</span>;
+}
+
+
+<span class="c">// Informa se o livro está emprestado</span>
+<span class="k">public</span> <span class="k">boolean</span> <span class="fn">isEmprestado</span>() {
+    <span class="k">return</span> emprestado;
+}
+```
+
+} </pre>
+
   </div>
 
-  <!-- Slide 5 -->
-  <div class="slide-wrap">
-    <div class="eyebrow">Exemplo</div>
-    <h2>LivroTest: primeira classe de teste</h2>
-    <div class="code-wrap"><pre>
+</div>
+
+ <!-- Slide 5 -->
+
+<div class="slide-wrap">
+
+  <div class="eyebrow">Exemplo</div>
+
+  <h2>LivroTest: primeira classe de teste</h2>
+
+  <div class="code-wrap">
+    <pre>
+<span class="k">import</span> org.junit.jupiter.api.BeforeEach;
+<span class="k">import</span> org.junit.jupiter.api.Test;
+
+<span class="k">import static</span> org.junit.jupiter.api.Assertions.assertFalse;
+
+<span class="k">public class</span> <span class="t">LivroTest</span> {
+
+```
+<span class="k">private</span> <span class="t">Livro</span> livro;
+
+
 <span class="fn">@BeforeEach</span>
 <span class="k">void</span> <span class="fn">configurarCadaTeste</span>() {
-    livro = <span class="k">new</span> <span class="fn">Livro</span>(<span class="s">"Clean Code"</span>, <span class="s">"R. Martin"</span>);
+
+    livro = <span class="k">new</span> <span class="fn">Livro</span>(
+        <span class="s">"Clean Code"</span>,
+        <span class="s">"R. Martin"</span>
+    );
 }
+
 
 <span class="fn">@Test</span>
 <span class="k">void</span> <span class="fn">livroDeveEstarDisponivel</span>() {
+
+    <span class="c">// Verifica se um livro novo não está emprestado</span>
     assertFalse(livro.isEmprestado());
 }
-    </pre></div>
-    <p class="lead" style="margin-top:14px; font-size:14.5px;">Um novo <code>Livro</code> é criado antes de <b>cada</b> teste — garantindo que um caso não interfira no outro.</p>
+```
+
+} </pre>
+
   </div>
+
+  <p class="lead" style="margin-top:14px; font-size:14.5px;">
+    O <code>@BeforeEach</code> cria um novo objeto <code>Livro</code> antes de
+    <b>cada teste</b>, garantindo que um teste não interfira no resultado do outro.
+  </p>
+
+</div>
 
   <!-- Slide 6: compare -->
   <div class="slide-wrap">
