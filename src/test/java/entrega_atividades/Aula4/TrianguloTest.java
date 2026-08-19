@@ -17,7 +17,8 @@ public class TrianguloTest {
     }
 
     @Test
-    void ladoNegativoDeveLancarExcecao() {
+    void criarTrianguloComLadoNegativoDeveLancarExcecao() {
+        // Act + Assert
         assertThrows(
                 IllegalArgumentException.class,
                 () -> new Triangulo(-1, 4, 5)

@@ -3,9 +3,6 @@ package entrega_atividades.Aula4;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ContaBancariaTest {
 
@@ -62,9 +59,11 @@ public class ContaBancariaTest {
 
 
     @Test
-    void depositarZeroDeveLancarExcecao() {
+    void depositarValorZeroDeveLancarExcecao() {
+        // Arrange
         ContaBancaria conta = new ContaBancaria("Maria", "123");
 
+        // Act + Assert
         IllegalArgumentException excecao = assertThrows(
                 IllegalArgumentException.class,
                 () -> conta.depositar(0.0)
@@ -78,10 +77,12 @@ public class ContaBancariaTest {
 
     @Test
     void sacarValorNegativoDeveLancarExcecao() {
+        // Arrange
         ContaBancaria conta = new ContaBancaria(
                 "Maria", "123", 100.0
         );
 
+        // Act + Assert
         assertThrows(
                 IllegalArgumentException.class,
                 () -> conta.sacar(-20.0)

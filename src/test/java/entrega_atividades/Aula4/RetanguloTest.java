@@ -2,13 +2,13 @@ package entrega_atividades.Aula4;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class RetanguloTest {
 
     @Test
-    void calcularAreaDeveMultiplicarLados() {
+    void calcularAreaDeveMultiplicarLarguraPorAltura() {
         // Arrange
         Retangulo retangulo = new Retangulo(4.0, 5.0);
 
@@ -32,22 +32,32 @@ public class RetanguloTest {
 
     @Test
     void retanguloDeveTerTodosOsDadosCorretos() {
-        Retangulo retangulo = new Retangulo(4.0, 5.0);
+        // Arrange + Act
+        Retangulo retangulo = new Retangulo(3.0, 6.0);
 
-        double largura = retangulo.getLargura();
-        double altura = retangulo.getAltura();
-
-        assertEquals(4.0, largura);
-        assertEquals(5.0, altura);
+        // Assert: assertAll roda TODAS as verificações, mesmo que uma falhe
+        assertAll(
+                () -> assertEquals(3.0, retangulo.getLargura()),
+                () -> assertEquals(6.0, retangulo.getAltura()),
+                () -> assertEquals(18.0, retangulo.calcularArea())
+        );
     }
 
 
 
     @Test
-    void larguraInvalidaDeveLancarExcecao() {
+    void criarRetanguloComLarguraInvalidaDeveLancarExcecao() {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> new Retangulo(-1, 5.0)
+        );
+    }
+
+    @Test
+    void criarRetanguloComAlturaInvalidaDeveLancarExcecao() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Retangulo(4.0, 0)
         );
     }
 }

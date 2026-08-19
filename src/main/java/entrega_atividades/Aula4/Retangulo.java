@@ -6,8 +6,8 @@ public class Retangulo {
     private double altura;
 
     public Retangulo(double largura, double altura) {
-        if (largura <= 0) {
-            throw new IllegalArgumentException("A largura não pode ser negativa ou zero.");
+        if (largura <= 0 || altura <= 0) {
+            throw new IllegalArgumentException("Largura e altura devem ser maiores que zero.");
         }
 
         this.largura = largura;
