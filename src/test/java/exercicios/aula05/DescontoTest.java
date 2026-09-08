@@ -61,8 +61,73 @@ class DescontoTest {
     @Test
     @Timeout(value = 10, unit = TimeUnit.MILLISECONDS)
     void calcularDeveTerminarRapidamente() {
-        // O teste passa se a chamada terminar antes do limite.
+        // Arrange: não há setup necessário
+        // Act: calcular desconto
+        // Assert: o teste passa se terminar antes do limite de 10ms
         Desconto.calcular(250.0, 15);
     }
 
+    @ParameterizedTest(name = "fronteira válida: {0}%")
+    @ValueSource(ints = {0, 100})
+    void fronteirasValidasDevemSerAceitas(int percentual) {
+        // Arrange: preço válido
+        double preco = 100.0;
+
+        // Act: calcular desconto com fronteiras válidas
+        double resultado = Desconto.calcular(preco, percentual);
+
+        // Assert: verificar cálculo correto
+        double esperado = (percentual == 0) ? 100.0 : 0.0;
+        assertEquals(esperado, resultado, 0.001);
+    }
+
+    @ParameterizedTest(name = "vizinho interno da fronteira {0}: {1}%")
+    @CsvSource({
+            "0, 1",
+            "100, 99"
+    })
+    void vizinhosInternosDasFronteirasDevemFuncionar(int fronteira, int vizinho) {
+        // Arrange: preço válido
+        double preco = 100.0;
+
+        // Act: calcular desconto com vizinho interno
+        double resultado = Desconto.calcular(preco, vizinho);
+
+        // Assert: verificar cálculo correto
+        double esperado = preco * (100 - vizinho) / 100.0;
+        assertEquals(esperado, resultado, 0.001);
+    }
+
+    @ParameterizedTest(name = "imediatamente fora da fronteira: {0}%")
+    @ValueSource(ints = {-1, 101})
+    void percentuaisImediatamenteForaDasFronteirasDevemFalhar(int percentual) {
+        // Arrange: preço válido
+        double preco = 100.0;
+
+        // Act & Assert: tentar calcular com percentual fora das fronteiras
+        IllegalArgumentException excecao = assertThrows(
+                IllegalArgumentException.class,
+                () -> Desconto.calcular(preco, percentual)
+        );
+
+        assertEquals("O percentual deve estar entre 0 e 100.", excecao.getMessage());
+    }
+
+    /*
+     * DEMONSTRAÇÃO DE FALHA PROPOSITAL (já realizada):
+     *
+     * Foi criado um teste proposital para falhar com os seguintes parâmetros:
+     * - Preço: 100.0
+     * - Percentual: 10%
+     * - Esperado (incorreto): 95.0
+     * - Obtido (correto): 90.0
+     *
+     * Relatório de falha demonstrado:
+     * - AssertionError: expected: <95.0> but was: <90.0>
+     * - Mostra claramente a diferença entre esperado e obtido
+     * - Indica a linha do código onde ocorreu a falha
+     * - Facilita a identificação rápida do problema
+     *
+     * O teste foi removido após demonstração para manter a suíte funcional.
+     */
 }
