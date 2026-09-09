@@ -40,7 +40,9 @@ public class ProdutoTest {
 
     @Test
     void verificarSeRejeitaQuandoPrecoForZero(){
-        // Arrange & Assert: tentar criar produto com preço zero
+        // Arrange: não há setup necessário
+        // Act: tentar criar produto com preço zero
+        // Assert: verificar exceção e mensagem
         IllegalArgumentException excecao = assertThrows(
                 IllegalArgumentException.class,
                 () -> new Produto("Bola", 0, 10)
@@ -50,7 +52,9 @@ public class ProdutoTest {
 
     @Test
     void verificarSeRejeitaQuandoPrecoForNegativo(){
-        // Arrange & Assert: tentar criar produto com preço negativo
+        // Arrange: não há setup necessário
+        // Act: tentar criar produto com preço negativo
+        // Assert: verificar exceção e mensagem
         IllegalArgumentException excecao = assertThrows(
                 IllegalArgumentException.class,
                 () -> new Produto("Bola", -10, 10)
@@ -60,7 +64,9 @@ public class ProdutoTest {
 
     @Test
     void verificarRejeicaoQuantidadeInicialNegativa(){
-        // Arrange & Assert: tentar criar produto com quantidade negativa
+        // Arrange: não há setup necessário
+        // Act: tentar criar produto com quantidade negativa
+        // Assert: verificar exceção e mensagem
         IllegalArgumentException excecao = assertThrows(
                 IllegalArgumentException.class,
                 () -> new Produto("Bola", 10.0, -1)

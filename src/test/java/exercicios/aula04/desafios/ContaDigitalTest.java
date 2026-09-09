@@ -47,7 +47,8 @@ public class ContaDigitalTest {
         // Arrange: criar conta digital
         ContaDigital contaDigital = new ContaDigital("Bento");
 
-        // Act & Assert: tentar depositar zero e verificar exceção e mensagem
+        // Act: tentar depositar zero
+        // Assert: verificar exceção e mensagem
         IllegalArgumentException excecao = assertThrows(
                 IllegalArgumentException.class,
                 () -> contaDigital.depositar(0)
@@ -62,7 +63,8 @@ public class ContaDigitalTest {
         // Arrange: criar conta digital
         ContaDigital contaDigital = new ContaDigital("Bento");
 
-        // Act & Assert: tentar depositar valor negativo e verificar exceção e mensagem
+        // Act: tentar depositar valor negativo
+        // Assert: verificar exceção e mensagem
         IllegalArgumentException excecao = assertThrows(
                 IllegalArgumentException.class,
                 () -> contaDigital.depositar(-10)
@@ -77,7 +79,8 @@ public class ContaDigitalTest {
         // Arrange: criar conta digital
         ContaDigital contaDigital = new ContaDigital("Bento");
 
-        // Act & Assert: tentar sacar zero e verificar exceção e mensagem
+        // Act: tentar sacar zero
+        // Assert: verificar exceção e mensagem
         IllegalArgumentException excecao = assertThrows(
                 IllegalArgumentException.class,
                 () -> contaDigital.sacar(0)
@@ -91,7 +94,8 @@ public class ContaDigitalTest {
         // Arrange: criar conta digital
         ContaDigital contaDigital = new ContaDigital("Bento");
 
-        // Act & Assert: tentar sacar valor negativo e verificar exceção e mensagem
+        // Act: tentar sacar valor negativo
+        // Assert: verificar exceção e mensagem
         IllegalArgumentException excecao = assertThrows(
                 IllegalArgumentException.class,
                 () -> contaDigital.sacar(-10)
@@ -107,7 +111,8 @@ public class ContaDigitalTest {
         ContaDigital contaDigital = new ContaDigital("Bento");
         contaDigital.depositar(100);
 
-        // Act & Assert: tentar sacar mais que o saldo e verificar exceção e mensagem
+        // Act: tentar sacar mais que o saldo
+        // Assert: verificar exceção e mensagem
         IllegalStateException excecao = assertThrows(
                 IllegalStateException.class,
                 () -> contaDigital.sacar(101)

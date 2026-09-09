@@ -60,7 +60,8 @@ public class UsuarioTest {
         // Arrange: criar usuário
         Usuario usuario = new Usuario("paulo","paulo@gmail.com");
 
-        // Act & Assert: tentar definir telefone nulo e verificar exceção e mensagem
+        // Act: tentar definir telefone nulo
+        // Assert: verificar exceção e mensagem
         IllegalArgumentException excecao = assertThrows(
                 IllegalArgumentException.class,
                 () -> usuario.definirTelefone(null)
@@ -74,7 +75,8 @@ public class UsuarioTest {
         // Arrange: criar usuário
         Usuario usuario = new Usuario("paulo","paulo@gmail.com");
 
-        // Act & Assert: tentar definir telefone em branco e verificar exceção e mensagem
+        // Act: tentar definir telefone em branco
+        // Assert: verificar exceção e mensagem
         IllegalArgumentException excecao = assertThrows(
                 IllegalArgumentException.class,
                 () -> usuario.definirTelefone("")

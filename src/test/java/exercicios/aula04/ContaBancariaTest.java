@@ -3,9 +3,6 @@ package exercicios.aula04;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ContaBancariaTest {
 
@@ -30,18 +27,13 @@ public class ContaBancariaTest {
                 "Maria", "123"
         );
 
-        // ACT + ASSERT: executa sacar() e captura a exceção.
+        // ACT: executa sacar() e captura a exceção.
         IllegalArgumentException excecao = assertThrows(
                 IllegalArgumentException.class,
                 () -> conta.sacar(50.0)
         );
 
-        // A exceção ocorreu e foi capturada, então esta linha roda.
-        System.out.println(
-                "Mensagem capturada: " + excecao.getMessage()
-        );
-
-        // A mensagem deve coincidir exatamente com a classe.
+        // ASSERT: a mensagem deve coincidir exatamente com a classe.
         assertEquals("Saldo insuficiente", excecao.getMessage());
     }
 
@@ -53,8 +45,8 @@ public class ContaBancariaTest {
         );
         conta.depositar(100.0);
 
-        // ACT + ASSERT: deve terminar normalmente.
-        assertDoesNotThrow(() -> conta.sacar(40.0));
+        // ACT: executa o saque.
+        conta.sacar(40.0);
 
         // ASSERT: 100 - 40 = 60.
         assertEquals(60.0, conta.getSaldo(), 0.001);
@@ -63,8 +55,11 @@ public class ContaBancariaTest {
 
     @Test
     void depositarZeroDeveLancarExcecao() {
+        // ARRANGE: criar conta
         ContaBancaria conta = new ContaBancaria("Maria", "123");
 
+        // ACT: tentar depositar zero
+        // ASSERT: verificar exceção e mensagem
         IllegalArgumentException excecao = assertThrows(
                 IllegalArgumentException.class,
                 () -> conta.depositar(0.0)
@@ -78,10 +73,13 @@ public class ContaBancariaTest {
 
     @Test
     void sacarValorNegativoDeveLancarExcecao() {
+        // ARRANGE: criar conta com saldo
         ContaBancaria conta = new ContaBancaria(
                 "Maria", "123", 100.0
         );
 
+        // ACT: tentar sacar valor negativo
+        // ASSERT: verificar que lança exceção
         assertThrows(
                 IllegalArgumentException.class,
                 () -> conta.sacar(-20.0)
