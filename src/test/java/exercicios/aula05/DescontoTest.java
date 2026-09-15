@@ -112,22 +112,4 @@ class DescontoTest {
 
         assertEquals("O percentual deve estar entre 0 e 100.", excecao.getMessage());
     }
-
-    /*
-     * DEMONSTRAÇÃO DE FALHA PROPOSITAL (já realizada):
-     *
-     * Foi criado um teste proposital para falhar com os seguintes parâmetros:
-     * - Preço: 100.0
-     * - Percentual: 10%
-     * - Esperado (incorreto): 95.0
-     * - Obtido (correto): 90.0
-     *
-     * Relatório de falha demonstrado:
-     * - AssertionError: expected: <95.0> but was: <90.0>
-     * - Mostra claramente a diferença entre esperado e obtido
-     * - Indica a linha do código onde ocorreu a falha
-     * - Facilita a identificação rápida do problema
-     *
-     * O teste foi removido após demonstração para manter a suíte funcional.
-     */
 }
