@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercícios — Teste de Sistemas</title>
+<style>
+  :root{
+    --bg:#0f172a; --panel:#1b2b4d; --ink:#e6ebf5; --muted:#93a3c2; --accent:#4ade80; --amber:#fbbf24; --danger:#f97373; --rule:#2b3a5e;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif; min-height:100vh; display:flex; flex-direction:column;}
+  .hdr{display:flex; justify-content:space-between; align-items:center; padding:14px 28px; border-bottom:1px solid var(--rule); font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--muted);}
+  .hdr b{color:var(--accent);}
+
+  .wrap{max-width:960px; margin:0 auto; padding:36px 24px 60px; width:100%; flex:1;}
+  h1{font-size:32px; margin:0 0 6px;}
+  p.sub{color:var(--muted); font-size:14.5px; margin:0 0 32px; line-height:1.6;}
+
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px;}
+  .card{background:var(--panel); border:1px solid var(--rule); border-radius:12px; padding:20px; transition:.2s;}
+  .card:hover{border-color:var(--accent); transform:translateY(-2px);}
+  .card .num{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--muted); margin-bottom:8px;}
+  .card h3{margin:0 0 8px; font-size:16px;}
+  .card p{margin:0 0 16px; font-size:13px; color:var(--muted); line-height:1.5;}
+  .card .links{display:flex; gap:8px; flex-wrap:wrap;}
+  .card a{display:inline-block; padding:6px 12px; border-radius:6px; font-size:12px; text-decoration:none; font-family:'JetBrains Mono',monospace; transition:.15s;}
+  .card a.challenge{background:var(--accent); color:#0f172a; font-weight:600;}
+  .card a.challenge:hover{background:#6ee7b7;}
+  .card a.feedback{background:var(--rule); color:var(--ink);}
+  .card a.feedback:hover{border-color:var(--accent);}
+
+  .tag{display:inline-block; padding:3px 8px; border-radius:4px; font-size:10px; font-family:'JetBrains Mono',monospace; text-transform:uppercase; letter-spacing:.04em; margin-top:8px;}
+  .tag.aval{background:var(--danger); color:#fff;}
+  .tag.proj{background:var(--amber); color:#0f172a;}
+
+  .footer{padding:14px 28px; border-top:1px solid var(--rule); font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--muted); text-align:center;}
+  .footer a{color:var(--accent); text-decoration:none;}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <span>UC <b>Teste de Sistemas</b> · Centro de Exercícios</span>
+  <span>15 aulas · 30 atividades</span>
+</div>
+
+<div class="wrap">
+  <h1>📝 Centro de Exercícios</h1>
+  <p class="sub">Todos os desafios, práticas e gabaritos do curso organizados por aula. Cada aula contém um desafio autônomo e feedback detalhado com gabaritos comentados.</p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="num">AULA 01</div>
+      <h3>Fundamentos de Teste + Revisão de POO</h3>
+      <p>Crie sua própria classe de entidade aplicando conceitos de encapsulamento e regras de negócio.</p>
+      <div class="links">
+        <a href="aula-01/desafio.html" class="challenge">Desafio</a>
+        <a href="aula-01/feedback.html" class="feedback">Feedback</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">AULA 02</div>
+      <h3>Ambiente de Desenvolvimento</h3>
+      <p>Configure o IntelliJ IDEA, crie um projeto Maven e entenda o arquivo pom.xml.</p>
+      <div class="links">
+        <a href="aula-02/desafio.html" class="challenge">Desafio</a>
+        <a href="aula-02/feedback.html" class="feedback">Feedback</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">AULA 03</div>
+      <h3>Primeiros Testes com JUnit 5</h3>
+      <p>Escreva seus primeiros testes unitários usando anotações e ciclo de vida do JUnit.</p>
+      <div class="links">
+        <a href="aula-03/desafio.html" class="challenge">Desafio</a>
+        <a href="aula-03/feedback.html" class="feedback">Feedback</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">AULA 04</div>
+      <h3>Asserções</h3>
+      <p>Domine as asserções do JUnit 5 e o padrão AAA (Arrange-Act-Assert).</p>
+      <div class="links">
+        <a href="aula-04/desafio.html" class="challenge">Desafio</a>
+        <a href="aula-04/feedback.html" class="feedback">Feedback</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">AULA 05</div>
+      <h3>Testes Parametrizados</h3>
+      <p>Escreva testes que aceitam múltiplos parâmetros e testes de exceção.</p>
+      <div class="links">
+        <a href="aula-05/desafio.html" class="challenge">Desafio</a>
+        <a href="aula-05/feedback.html" class="feedback">Feedback</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">AULA 06</div>
+      <h3>Organização de Testes</h3>
+      <p>Organize testes com @DisplayName, @Nested e @Tag; revisão de herança e polimorfismo.</p>
+      <div class="links">
+        <a href="aula-06/desafio.html" class="challenge">Desafio</a>
+        <a href="aula-06/feedback.html" class="feedback">Feedback</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">AULA 07</div>
+      <h3>Test Doubles</h3>
+      <p>Entenda e aplique conceitos de dummy, stub, fake, spy e mock.</p>
+      <div class="links">
+        <a href="aula-07/desafio.html" class="challenge">Desafio</a>
+        <a href="aula-07/feedback.html" class="feedback">Feedback</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">AULA 08</div>
+      <h3>Mockito I</h3>
+      <p>Introdução ao Mockito com @Mock, when/thenReturn e verify.
+      <span class="tag aval">Avaliação</span></p>
+      <div class="links">
+        <a href="aula-08/desafio.html" class="challenge">Desafio</a>
+        <a href="aula-08/feedback.html" class="feedback">Feedback</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">AULA 09</div>
+      <h3>Mockito II</h3>
+      <p>Mocks avançados com ArgumentCaptor, @InjectMocks e integração com JUnit 5.</p>
+      <div class="links">
+        <a href="aula-09/desafio.html" class="challenge">Desafio</a>
+        <a href="aula-09/feedback.html" class="feedback">Feedback</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">AULA 10</div>
+      <h3>Cobertura de Código</h3>
+      <p>Use JaCoCo para medir e interpretar relatórios de cobertura de código.</p>
+      <div class="links">
+        <a href="aula-10/desafio.html" class="challenge">Desafio</a>
+        <a href="aula-10/feedback.html" class="feedback">Feedback</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">AULA 11</div>
+      <h3>TDD</h3>
+      <p>Pratique o ciclo Red-Green-Refactor construindo funcionalidade do zero.</p>
+      <div class="links">
+        <a href="aula-11/desafio.html" class="challenge">Desafio</a>
+        <a href="aula-11/feedback.html" class="feedback">Feedback</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">AULA 12</div>
+      <h3>Spring + Testes de Serviço</h3>
+      <p>Teste camadas de serviço em aplicações Spring Boot com @SpringBootTest.</p>
+      <div class="links">
+        <a href="aula-12/desafio.html" class="challenge">Desafio</a>
+        <a href="aula-12/feedback.html" class="feedback">Feedback</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">AULA 13</div>
+      <h3>Testes de Repositório</h3>
+      <p>Teste persistência com @DataJpaTest e banco H2 em memória.
+      <span class="tag proj">Projeto Integrador</span></p>
+      <div class="links">
+        <a href="aula-13/desafio.html" class="challenge">Desafio</a>
+        <a href="aula-13/feedback.html" class="feedback">Feedback</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">AULA 14</div>
+      <h3>Testes de Controller</h3>
+      <p>Teste endpoints REST com MockMvc, validando status codes e corpo de resposta.
+      <span class="tag proj">Projeto Integrador</span></p>
+      <div class="links">
+        <a href="aula-14/desafio.html" class="challenge">Desafio</a>
+        <a href="aula-14/feedback.html" class="feedback">Feedback</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">AULA 15</div>
+      <h3>Projeto Integrador — Fechamento</h3>
+      <p>Finalização e apresentação do projeto completo com suíte de testes.
+      <span class="tag proj">Entrega Final</span></p>
+      <div class="links">
+        <a href="aula-15/desafio.html" class="challenge">Desafio</a>
+        <a href="aula-15/feedback.html" class="feedback">Feedback</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <a href="../docs/index.html">← Voltar ao Plano de Ensino</a>
+</div>
+
+</body>
+</html>
